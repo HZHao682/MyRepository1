@@ -1,0 +1,207 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8">
+ 
+	<title>企业端登录页面</title>
+	<link rel="stylesheet" type="text/css" th:href="@{css/head.css}" />
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
+	<link href="iTunesArtwork@2x.png" sizes="114x114" rel="apple-touch-icon-precomposed">
+	<link rel="stylesheet" type="text/css" th:href="@{css/base.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{css/home.css}">
+</head>
+<body  style="background-image: url(img/background.jpg);">
+	<header class="aui-header">
+		<div class="aui-header-box">
+			<div class="m-head">
+				<div class="m-head-slider">
+					<a href="#"></a>
+				</div>
+				<div class="m-head-bar">
+					<div class="c-wrapper">
+						<a href="#">帮助中心</a>
+						<a href="/login">登录</a>
+						<span>|</span>
+						<a href="/register">免费入驻</a>
+						<span>|</span>
+						<a href="/ep_login">企业入口</a>
+					</div>
+				</div>
+				<div class="m-head-nav">
+					<ul class="c-wrapper">
+						<li class="m-head-nav-logo">
+							<a href="/ep_main"><img src="img/logo.ico" alt="66招聘网企业端">66招聘网企业端</a>
+						</li>
+			
+						<li class="m-head-nav-item ">
+							<a href="/ep_main">首页</a>
+						</li>
+			
+						<li class="m-head-nav-item  ">
+							<a href="#">寻找简历</a>
+						</li>
+			
+						<li class="m-head-nav-item  ">
+							<a href="#">发布工作</a>
+						</li>
+			
+						<li class="m-head-nav-item m-head-nav-right ">
+							<a href="#">企业设置</a>
+						</li>
+			
+					</ul>
+				</div>
+			</div>
+		</div>
+	</header>
+	<section class="aui-content">
+		<div class="aui-content-box clearfix">
+			<div class="aui-content-box-fl">
+				<div class="aui-form-header">
+					<div class="aui-form-header-item on">密码登录</div>
+					<div class="aui-form-header-item">验证码登录</div>
+					<span class="aui-form-header-san"></span>
+				</div>
+				<div class="aui-form-content">
+					<div class="aui-form-content-item">
+						<form id="accountLoginForm">
+							<div class="aui-form-list">
+								<input type="text" class="aui-input" id="ep_account" name="ep_account" placeholder="请输入手机号/邮箱" >
+							</div>
+							<div class="aui-form-list">
+								<input type="password" class="aui-input" id="ep_passWord" name="ep_passWord" placeholder="请输入密码" >
+							</div>
+							<div class="aui-form-pwd clearfix">
+								<a href="#">忘记密码？</a>
+							</div>
+							<div class="aui-form-btn">
+								<input href="javascript:;" type="button" id="accountLogin" name="accountLogin" class="aui-btn" value="登&nbsp;录" >
+							</div>
+						</form>
+					</div>
+					<div class="aui-form-content-item">
+						<form id="phoneLoginForm">
+							<div class="aui-form-list">
+								<input type="text" class="aui-input" id="ep_phone" name="ep_phone" placeholder="请输入手机号">
+							</div>
+							<div class="aui-form-list">
+								<input type="text" class="aui-input" id="vcode" name="vcode" placeholder="请证明你不是机器人">
+								<span  class="aui-child aui-child-img">
+									<img id="vimg"src="/createCode" >
+								</span>
+							</div>
+							<div class="aui-form-list">
+								<input type="text" class="aui-input" name="phone_code" placeholder="请输入验证码" data-required="required" autocomplete="off">
+								<input type="button" class="aui-child" value="获取验证码" >
+							</div>
+							<div class="aui-form-pwd clearfix">
+								<a href="#">忘记密码？</a>
+							</div>
+							<div class="aui-form-btn">
+								<input type="submit" class="aui-btn" value="登&nbsp;录">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="aui-content-box-fr">
+				<div class="aui-content-box-text">
+					<h3>还没有帐号:</h3>
+					<a href="/ep_register" class="aui-ll-link">立即注册</a>
+					<h3>使用第三方帐号直接登录:</h3>
+					<ul class="aui-content-box-text-link clearfix">
+						<li><a href="#" class="aui-icon-sina"   title="使用新浪微博帐号登录"></a></li>
+						<li><a href="#" class="aui-icon-wechat" title="使用微信帐号登录"></a></li>
+						<li><a href="#" class="aui-icon-qq"     title="使用腾讯QQ帐号登录"></a></li>
+						<li><a href="#" class="aui-icon-baidu"  title="使用百度帐号登录"></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+	<script type="text/javascript" th:src="@{js/jquery.min.js}"></script>	
+	<script type="text/javascript">
+        $(function(){
+        	
+			/*tab标签切换*/
+            function tabs(tabTit,on,tabCon){
+                $(tabCon).each(function(){
+                    $(this).children().eq(0).show();
+                });
+                $(tabTit).each(function(){
+                    $(this).children().eq(0).addClass(on);
+                });
+                $(tabTit).children().click(function(){
+                	$("#vimg").trigger("click");
+                    $(this).addClass(on).siblings().removeClass(on);
+                    var index = $(tabTit).children().index(this);
+                    $(tabCon).children().eq(index).show().siblings().hide();
+                    });           	
+			}
+			
+			/*验证码  回车键事件*/
+			function vcode(){
+				// 等文档加载完成以后再执行本脚本 
+	   		 	// 给验证码绑定点击事件 
+	   		 	// vimg
+	   		 	$("#vimg").click(function(){
+	   		 		$(this).attr("src","/createCode?timer="+new Date().getTime());
+	   		 	}).mouseover(function(){
+	   		 		$(this).css("cursor","pointer");
+	   		 	});
+				//回车键事件
+				$(document).keydown(function(event){
+					if(event.keyCode == 13){
+						$("#accountLogin").trigger("click");
+					}
+				});
+			}
+			
+			/*登录 */
+            function accountLogin(){	
+				$("#accountLogin").bind("click",function(){
+					var ep_account = $("#ep_account").val();
+					var ep_passWord = $("#ep_passWord").val();
+					// 定义一个校验结果 
+					var msg = "";
+					if(!/^\w{2,20}$/.test(ep_account.trim()) && !/[\w]+(\.[\w]+)*@[\w]+(\.[\w])/.test(ep_account.trim())){
+						alert("登录名必须是2-20个的字符");
+						return;
+					}else if(!/^\w{6,20}$/.test(ep_passWord)){
+					 	alert("密码必须是6-20个的字符");
+					 	return;
+					}
+					var params = $("#accountLoginForm").serialize();	
+					 /** 发起异步请求登录 */
+					 $.ajax({
+						 url:"/ep_accountLogin",
+						 type: "post",
+						 dataType : "json",
+						 data : {
+							 ep_account : ep_account,
+							 ep_passWord : ep_passWord
+						 } ,
+						 async : true ,  // 是异步还是异步中的同步
+						 success : function(result){
+							 if(result == 1){
+								 window.location ="/ep_main";
+							 }else if(result == 0){
+								 alert("账号不存在!")
+							 }else if(result == 2){
+								 alert("账号或密码错误!")
+							 }else if(result == 3){
+								 alert("该账号已被冻结!")
+							 }
+						 }
+					 })
+				})
+			}
+			
+			tabs(".aui-form-header","on",".aui-form-content");
+			vcode();
+			accountLogin();
+        })
+        	
+	</script>
+</body>
+</html>

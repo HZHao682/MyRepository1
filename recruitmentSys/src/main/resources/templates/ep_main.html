@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta charset="UTF-8">
+<title>企业端首页</title>
+	<link rel="stylesheet" type="text/css" th:href="@{css/style.css}" />
+	
+</head>
+<body>
+	<div class="m-head">
+		<div class="m-head-slider">
+			<a href="#"></a>
+		</div>
+		<div class="m-head-bar">	
+			<div th:if="${epname} eq null" class="c-wrapper">
+				<a href="#">帮助中心</a>
+				<a href="/login"  id="login">登录</a>
+				<span>|</span>
+				<a href="/register" id="register">免费入驻</a>
+				<span>|</span>
+				<a href="/ep_login">企业入口</a>
+			</div>
+			<div th:if="${epname} ne null" class="c-wrapper">
+				<a href="#">帮助中心</a>
+				<a id="ep_name" th:text="'用户：' + ${epname}"></a>
+				<span>|</span>	
+				<a href="/logout" id="logout">注销</a>
+			</div>
+		</div>
+		<div class="m-head-nav">
+			<ul class="c-wrapper">
+				<li class="m-head-nav-logo">
+					<a href="/ep_main"><img src="img/logo.ico" alt="66招聘网">66招聘网企业端</a>
+				</li>
+	
+				<li class="m-head-nav-item ">
+					<a href="/main">首页</a>
+				</li>
+	
+				<li class="m-head-nav-item  ">
+					<a href="#">寻找简历</a>
+				</li>
+	
+				<li class="m-head-nav-item  ">
+					<a href="#">发布工作</a>
+				</li>
+	
+				<li class="m-head-nav-item m-head-nav-right ">
+					<a href="#">企业设置</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="index-top">
+		<div class="m-carousel slideBox">
+			<div class="bd">
+				<ul class="m-carousel-list">
+	
+					<li style="background-image: url(img/slider2.jpg);">
+						<a href="#">
+							<h2 class="c-line-clamp m-carousel-title">当代大学生现状</h2>
+							<p class="c-line-clamp m-carousel-note">毕业难找工作，沦为啃老族</p>
+							<p class="m-carousel-btn">了解更多</p>
+						</a>
+					</li>
+	
+					<li style="background-image: url(img/slider1.jpg);">
+						<a href="#">
+							<h2 class="c-line-clamp m-carousel-title">66招聘网新上线</h2>
+							<p class="c-line-clamp m-carousel-note">共享工作福利 助力小6成长</p>
+							<p class="m-carousel-btn">了解更多</p>
+						</a>
+					</li>
+	
+				</ul>
+			</div>
+			<div class="c-carousel-dot hd"><span class="active"></span><span></span></div>
+		</div>
+		<div class="index-top-bar">
+			<div class="c-wrapper">
+				<div class="c-row">
+					<div class="c-col16 index-top-news">
+						<h6>招聘新闻</h6>
+						<ul class="c-gap-top-small">
+	
+							<li class="c-line-clamp">
+								<a href="#">· 梁志宏是帅逼</a>
+							</li>
+	
+							<li class="c-line-clamp">
+								<a href="#">· 666666</a>
+							</li>
+	
+						</ul>
+					</div>
+					<div class="c-col4 index-top-media">
+						<h6>关注我们</h6>
+						<div class="c-gap-top-small">
+							<i class="c-icon"><div class="index-top-media-qrcode index-top-media-qrcode-wechat">关注我的微信号</div></i>
+						</div>
+					</div>
+					<div class="c-col4 index-top-tel">
+						<h6>服务热线</h6>
+						<p class="c-gap-top">
+							<a href="#">15625508607</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script th:src="@{js/jquery-1.11.0.js}" type="text/javascript" charset="utf-8"></script>
+	<script th:src="@{js/jquery.SuperSlide.2.1.1.js}" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+	$(function(){
+		//自动播放滑块
+		function slide(){
+			jQuery(".slideBox").slide({
+				mainCell: ".bd ul",
+				titCell: ".hd span",
+				titOnClassName: "active",
+				effect: "left",
+				autoPlay: true,
+				trigger: "click"
+			});
+		}
+		slide();
+	})
+	</script>
+</body>
+
+
+</html>

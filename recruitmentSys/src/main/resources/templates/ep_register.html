@@ -1,0 +1,225 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+ 
+	<title>企业端注册页面</title>
+	<link rel="stylesheet" type="text/css" th:href="@{css/head.css}" />
+	<link rel="icon" type="image/x-icon" href="favicon.ico" />
+	<link href="iTunesArtwork@2x.png" sizes="114x114" rel="apple-touch-icon-precomposed" />
+	<link rel="stylesheet" type="text/css" th:href="@{css/base.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{css/home.css}" />
+</head>
+<body style="background-image: url(img/background.jpg);">
+	<header class="aui-header">
+		<div class="aui-header-box">
+			<div class="m-head">
+				<div class="m-head-slider">
+					<a href="#"></a>
+				</div>
+				<div class="m-head-bar">
+					<div class="c-wrapper">
+						<a href="#">帮助中心</a>
+						<a href="/login">登录</a>
+						<span>|</span>
+						<a href="/register">免费入驻</a>
+						<span>|</span>
+						<a href="/ep_login">企业入口</a>
+					</div>
+				</div>
+				<div class="m-head-nav">
+					<ul class="c-wrapper">
+						<li class="m-head-nav-logo">
+							<a href="/ep_main"><img src="img/logo.ico" alt="66招聘网企业端">66招聘网企业端</a>
+						</li>
+			
+						<li class="m-head-nav-item ">
+							<a href="/ep_main">首页</a>
+						</li>
+			
+						<li class="m-head-nav-item  ">
+							<a href="#">寻找简历</a>
+						</li>
+			
+						<li class="m-head-nav-item  ">
+							<a href="#">发布工作</a>
+						</li>
+			
+						<li class="m-head-nav-item m-head-nav-right ">
+							<a href="#">企业设置</a>
+						</li>
+			
+					</ul>
+				</div>
+			</div>
+		</div>
+	</header>
+	<section class="aui-content">
+		<div class="aui-content-box clearfix">
+			<div class="aui-content-box-fl">
+				<div class="aui-form-header">
+					<div class="aui-form-header-item on">手机注册</div>
+					<div class="aui-form-header-item">邮箱注册</div>
+					<span class="aui-form-header-san"></span>
+				</div>
+				<div class="aui-form-content">
+					<div class="aui-form-content-item">
+						<form id="PRegiser">
+							<div class="aui-form-list">
+								<input type="text" class="aui-input" id="ep_phone" name="ep_phone" placeholder="请输入手机号" data-required="required" autocomplete="off">
+							</div>
+							<div class="aui-form-list">
+								<input type="text" class="aui-input" id="vcode" name="vcode" placeholder="请证明你不是机器人" data-required="required" autocomplete="off">
+								<span  class="aui-child aui-child-img">
+									<img id="vimg"src="/createCode" >
+								</span>
+							</div>
+							<div class="aui-form-list">
+								<input type="text" class="aui-input" name="" placeholder="请输入验证码" data-required="required" autocomplete="off">
+								<input type="button" class="aui-child" value="获取验证码" >
+							</div>
+							<div class="aui-form-btn">
+								<input type="submit" class="aui-btn" value="注&nbsp;册">
+							</div>
+							<div class="aui-form-ty">
+								注册代表你已同意 <a href="#" style="color: #00b38a">「招聘网用户协议」</a>
+							</div>
+						</form>
+					</div>
+					<div class="aui-form-content-item">
+						<form id="REgisterForm">
+							<div class="aui-form-list">
+								<input type="text" class="aui-input" id="ep_email" name="ep_email" placeholder="请输入邮箱" data-required="required" autocomplete="off" />
+							</div>
+							<div class="aui-form-list">
+								<input type="text" class="aui-input" id="vcode1" name="vcode1" placeholder="请证明你不是机器人" data-required="required" autocomplete="off" />
+								<span  class="aui-child aui-child-img">
+									<img id="vimg1"src="/createCode" >
+								</span>
+							</div>
+							<div class="aui-form-list">
+								<input type="text" class="aui-input" id="ep_passWord" name="ep_passWord" placeholder="请输入密码" data-required="required" autocomplete="off" />							
+							</div>
+							<div class="aui-form-btn">
+								<input type="button" id="ERegister" name="ERegister" class="aui-btn" value="注&nbsp;册">
+							</div>
+							<div class="aui-form-ty">
+								注册代表你已同意 <a href="#" style="color: #00b38a">「招聘网用户协议」</a>
+							</div>
+						</form>	
+					</div>
+				</div>
+			</div>
+			<div class="aui-content-box-fr">
+				<div class="aui-content-box-text">
+					<h3>已有帐号:</h3>
+					<a href="/ep_login" class="aui-ll-link">直接登录</a>
+					<h3>使用第三方帐号直接登录:</h3>
+					<ul class="aui-content-box-text-link clearfix">
+						<li><a href="#" class="aui-icon-sina"   title="使用新浪微博帐号登录"></a></li>
+						<li><a href="#" class="aui-icon-wechat" title="使用微信帐号登录"></a></li>
+						<li><a href="#" class="aui-icon-qq"     title="使用腾讯QQ帐号登录"></a></li>
+						<li><a href="#" class="aui-icon-baidu"  title="使用百度帐号登录"></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+	<script type="text/javascript" th:src="@{js/jquery.min.js}"></script>
+		<script type="text/javascript">
+        $(function(){
+			/*tab标签切换*/
+            function tabs(tabTit,on,tabCon){
+                $(tabCon).each(function(){
+                    $(this).children().eq(0).show();
+
+                });
+                $(tabTit).each(function(){
+                    $(this).children().eq(0).addClass(on);
+                });
+                $(tabTit).children().click(function(){
+                	$("#vimg").trigger("click");
+                	$("#vimg1").trigger("click");
+                    $(this).addClass(on).siblings().removeClass(on);
+                    var index = $(tabTit).children().index(this);
+                    $(tabCon).children().eq(index).show().siblings().hide();
+                });
+            }
+			
+            /*验证码  回车键事件*/
+			function vcode(){
+				// 等文档加载完成以后再执行本脚本 
+	   		 	// 给验证码绑定点击事件 
+	   		 	// vimg,vimg1
+	   		 	$("#vimg").click(function(){
+	   		 		$(this).attr("src","/createCode?timer="+new Date().getTime());
+	   		 	}).mouseover(function(){
+	   		 		$(this).css("cursor","pointer");
+	   		 	});
+	   		 $("#vimg1").click(function(){
+	   		 		$(this).attr("src","/createCode?timer="+new Date().getTime());
+	   		 	}).mouseover(function(){
+	   		 		$(this).css("cursor","pointer");
+	   		 	});
+				//回车键事件
+				$(document).keydown(function(event){
+					if(event.keyCode == 13){
+						$("#ERregister").trigger("click");
+					}
+				});
+			}
+            
+			/*邮箱注册 */
+            function ERegister(){	
+				$("#ERegister").bind("click",function(){					
+					var ep_email = $("#ep_email").val();
+					var ep_passWord = $("#ep_passWord").val();
+					var vcode1=$("#vcode1").val();
+					// 定义一个校验结果 
+					var msg = "";
+					if(!/[\w]+(\.[\w]+)*@[\w]+(\.[\w])/.test(ep_email.trim())){
+						alert("邮箱格式错误!");
+						$("#vimg1").trigger("click");
+						return;
+					}else if(!/^\w{6,20}$/.test(ep_passWord)){
+					 	alert("密码必须是6-20个的字符!");
+					 	$("#vimg1").trigger("click");
+					 	return;
+					}else if(!/^\w{4}$/.test(vcode1)){
+						 alert("验证码格式不正确!");
+						 $("#vimg1").trigger("click");
+						 return;
+					 }
+					var params = $("#REgisterForm").serialize();
+					 /** 发起异步请求登录 */
+					 $.ajax({
+						 url:"/Ep_ERegister",
+						 type: "post",
+						 dataType : "json",
+						 data : {
+							 ep_email : ep_email,
+							 ep_passWord : ep_passWord
+						 } ,
+						 async : true ,  // 是异步还是异步中的同步
+						 success : function(result){
+							 if(result == 1){
+								 alert("注册成功!")
+								 window.location ="/ep_login";
+								 //swal('注册成功!','','success')
+							 }else if(result == 0){
+								 alert("邮箱已存在!")
+							 }else if(result == 2){
+								 alert("注册失败，请重试!")
+							 }
+						 }
+					 })
+				})
+			}
+			
+            tabs(".aui-form-header","on",".aui-form-content");
+            vcode();
+            ERegister();
+        })
+	</script>
+</body>
+</html>

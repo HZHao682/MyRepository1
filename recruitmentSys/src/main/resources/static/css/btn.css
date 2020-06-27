@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:300,400,700");
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+}
+.container {
+  display: flex;
+
+  align-items: center;
+
+}
+
+.btn {
+  background-color: #caa0d1;
+  color: white;
+  padding: 1rem 2.5rem;
+  border-radius: 5px;
+  -moz-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  transition: all .2s, transform .1s;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.2);
+}
+.btn:hover {
+  background-color: #26c281;
+}
+.btn:hover > .p1 {
+  transform: translateY(4rem);
+}
+.btn:hover > .p2 {
+  top: 30%;
+}
+.btn:active {
+  transform: scale(0.95);
+}
+
+p {
+  transition: .2s;
+}
+
+.p2 {
+  position: absolute;
+  top: -2rem;
+  left: 42%;
+}
+
+
+
+.activep1 {
+  transform: translateY(4rem);
+}
+
+.activep2 {
+  top: 30%;
+}
+
+.profile {
+  color: #555;
+  position: absolute;
+  top: .5rem;
+  left: 1.5rem;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+}
+.profile .fa-codepen {
+  margin-right: .5rem;
+}
+.profile .author a:link,
+.profile .author a:visited {
+  color: inherit;
+  text-transform: uppercase;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.footer {
+  height: 10vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #cdd1d6;
+  background-color: #dee1e5;
+  font-weight: 300;
+  color: #555;
+  position: relative;
+}
+.footer span {
+  margin-left: 2px;
+  font-weight: 400;
+  cursor: pointer;
+}
+.footer span a:link,
+.footer span a:visited {
+  color: currentColor;
+  text-decoration: none;
+}

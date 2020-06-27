@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta charset="UTF-8">
+<title>找工作</title>
+	<link rel="stylesheet" type="text/css" th:href="@{css/head.css}" />
+	<link type="text/css" rel="stylesheet" th:href="@{css/demo.css}" />
+	<link rel="stylesheet" th:href="@{css/btn.css}">
+</head>
+<body>
+	<div class="m-head">
+		<div class="m-head-slider">
+			<a href="#"></a>
+		</div>
+		<div class="m-head-bar">
+			<div th:if="${username} eq null" class="c-wrapper">
+				<a href="#">帮助中心</a>
+				<a href="/login"  id="login">登录</a>
+				<span>|</span>
+				<a href="/register" id="register">免费入驻</a>
+				<span>|</span>
+				<a href="/ep_login">企业入口</a>
+			</div>
+			<div th:if="${username} ne null" class="c-wrapper">
+				<a href="#">帮助中心</a>
+				<a id="user_name" th:text="'用户：' + ${username}"></a>
+				<span>|</span>	
+				<a href="/logout" id="logout">注销</a>
+			</div>
+		</div>
+		<div class="m-head-nav">
+			<ul class="c-wrapper">
+				<li class="m-head-nav-logo">
+					<a href="/main"><img src="img/logo.ico" alt="66招聘网">66招聘网</a>
+				</li>
+	
+				<li class="m-head-nav-item ">
+					<a href="/main">首页</a>
+				</li>
+	
+				<li class="m-head-nav-item  active">
+					<a href="/job">找工作</a>
+				</li>
+	
+				<li class="m-head-nav-item  ">
+					<a href="/findEnterprise">找企业</a>
+				</li>
+	
+				<li class="m-head-nav-item m-head-nav-right ">
+					<a href="#">个人中心</a>
+				</li>
+	
+			</ul>
+		</div>
+	</div>
+	
+	<div style="margin-left:50px;">
+		<div style="width: 75%;">
+			<a th:text="${jobDetail1.ep_name}" style="font-size: 50px;color: #ddc3e2;"></a><br/>
+			<a th:text="'发布时间：'+${jobDetail1.re_time}" style="font-size: 20px;color: #ddc3e2"></a>
+			<a th:text="'点击人数：'+${jobDetail1.re_clicknum}" style="font-size: 20px;color: #ddc3e2;margin-left:20px;"></a>	
+		</div>
+		<div class="container" style="margin-left:75%;">
+	        <div href="javascript:;" class="btn" id="application">
+	            <p  class="p1"> 投递简历！ </p>
+	            <p style="color: #ddc3e2" class="p2">确认！</p>
+	        </div>
+		</div>
+		<div style="width: 75%;">
+			<a th:text="'工作岗位：'+${jobDetail1.re_job}" style="font-size: 40px;color: #ddc3e2"></a><br/>
+			<a th:text="'工作城市：'+${jobDetail1.re_city}" style="font-size: 20px;color: #ddc3e2"></a><br/>
+			<a th:text="'招聘人数：'+${jobDetail1.re_num}" style="font-size: 20px;color: #ddc3e2"></a><br/>
+			<a th:text="'工作薪资：'+${jobDetail1.re_speciality}" style="font-size: 20px;color: #ddc3e2"></a><br/>
+			<a th:text="工作简介：" style="font-size: 27px;color: #ddc3e2"></a><br>
+			<a th:text="${jobDetail1.re_inf}" style="font-size: 25px;color: #ddc3e2"></a><br/>
+			<a th:text="'联系电话：'+${jobDetail1.ep_phone}" style="font-size: 25px;color: #ddc3e2"></a><br/>
+		</div>
+	</div>
+	<script th:src="@{js/jquery-1.11.0.js}" type="text/javascript" charset="utf-8"></script>
+	<script th:src="@{js/btn.js}"></script>
+	<script th:inline="javascript">
+		var user_id = [[${user_id}]];
+		var re_id = [[${jobDetail1.re_id}]];
+		var ap_job = [[${jobDetail1.re_job}]];
+		function application(){
+			$("#application").bind("click",function(){
+				$.ajax({
+					 url:"/application",
+					 type: "post",
+					 dataType : "json",
+					 data : {
+						 user_id : user_id,
+						 re_id : re_id,
+						 ap_job : ap_job
+					 } ,
+					 async : true ,  // 是异步还是异步中的同步
+					 success : function(result){
+						 if(result == 1){
+							 alert("提交成功")
+							 window.location ="/job";
+						 }else if(result == 0){
+							 alert("提交异常")
+						 }
+					 }
+				 })
+			})
+		}
+		application();
+	</script>
+</body>
+
+
+</html>
